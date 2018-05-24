@@ -551,9 +551,7 @@ fn pb_to_addr_meta(
 ) -> Option<(SocketAddr, Metadata)> {
     let addr = pb.addr.and_then(pb_to_sock_addr)?;
     let label_iter = set_labels.iter().chain(pb.metric_labels.iter());
-    let meta = Metadata {
-        metric_labels: DstLabels::new(label_iter),
-    };
+    let meta = Metadata::from_labels(DstLabels::new(label_iter));
     Some((addr, meta))
 }
 
