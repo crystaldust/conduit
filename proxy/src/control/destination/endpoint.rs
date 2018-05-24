@@ -34,6 +34,10 @@ impl Endpoint {
     pub fn dst_labels(&self) -> Option<&DstLabels> {
         self.metadata.dst_labels()
     }
+
+    pub fn supports_tls(&self) -> bool {
+        self.metadata.supports_tls()
+    }
 }
 
 impl From<SocketAddr> for Endpoint {

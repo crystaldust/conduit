@@ -82,7 +82,9 @@ impl<'a> From<&'a HostAndPort> for http::uri::Authority {
 
 impl Connect {
     /// Returns a `Connect` to `addr`.
-    pub fn new(addr: SocketAddr) -> Self {
+    pub fn new(addr: SocketAddr, supports_tls: bool) -> Self {
+        // TODO: this is currently unused.
+        let _ = supports_tls;
         Self {
             addr,
         }
