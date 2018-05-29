@@ -11,6 +11,7 @@ use super::Metadata;
 pub struct Endpoint {
     address: SocketAddr,
     metadata: Metadata,
+
 }
 
 // ==== impl Endpoint =====
