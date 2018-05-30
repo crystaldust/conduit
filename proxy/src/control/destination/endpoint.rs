@@ -1,8 +1,7 @@
 use std::net::SocketAddr;
 
 use telemetry::metrics::DstLabels;
-use super::Metadata;
-
+use super::{Metadata, TlsVerification};
 
 /// An individual traffic target.
 ///
@@ -11,7 +10,6 @@ use super::Metadata;
 pub struct Endpoint {
     address: SocketAddr,
     metadata: Metadata,
-
 }
 
 // ==== impl Endpoint =====
@@ -36,8 +34,8 @@ impl Endpoint {
         self.metadata.dst_labels()
     }
 
-    pub fn supports_tls(&self) -> bool {
-        self.metadata.supports_tls()
+    pub fn tls_verification(&self) -> Option<&TlsVerification> {
+        self.metadata.tls_verification()
     }
 }
 

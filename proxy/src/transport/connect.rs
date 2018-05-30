@@ -8,6 +8,7 @@ use std::str::FromStr;
 use http;
 
 use connection;
+use control::destination;
 use dns;
 
 #[derive(Debug, Clone)]
@@ -82,9 +83,12 @@ impl<'a> From<&'a HostAndPort> for http::uri::Authority {
 
 impl Connect {
     /// Returns a `Connect` to `addr`.
-    pub fn new(addr: SocketAddr, supports_tls: bool) -> Self {
+    pub fn new(
+        addr: SocketAddr,
+        tls_verification: Option<&destination::TlsVerification>,
+    ) -> Self {
         // TODO: this is currently unused.
-        let _ = supports_tls;
+        let _ = tls_verification;
         Self {
             addr,
         }
